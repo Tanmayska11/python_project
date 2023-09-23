@@ -1,0 +1,31 @@
+{% extends "emp/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="post" autocomplete="off" >
+    {% csrf_token %}
+    {{form.fullname|as_crispy_field}}
+    {{form.mobile|as_crispy_field}}
+    <div class="row">
+        <div class="col-md-4">
+            {{form.emp_code|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.position|as_crispy_field}}
+        </div>
+    </div>
+
+    <div class="row" style="margin:10px;">
+        <div class="col-md-8" style="background-color: lightskyblue; border-radius: 10px;">
+            <button class="btn btn-sucess btn-block btn-lg"><i class="fas fa-database"></i>Submit</button>
+        </div>
+        <div class="col-md-4" style=" border-radius: 10px;">
+            <a href="{% url 'employee_list' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>List</a>
+        </div>
+    </div>
+
+    
+
+
+</form>
+{% endblock content %}
