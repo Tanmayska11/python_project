@@ -1,0 +1,42 @@
+{% extends "emp/base.html" %}
+
+{% block content %}
+<div class="container1"">
+
+    <table class="table table-borderless" >
+        <thead class="border-bottom font-weight-bold"  style="font-weight: 20px;">
+            
+            <tr>
+                <td >Full Name</td>
+                <td>Mobile</td>
+                <td>Position</td>
+                <td>
+                    <a href="{% url 'employee_insert' %}" class="btn btn-outline-sucess" style="background-color: lightskyblue;">
+                        <i class="fas fa-plus"></i>Add New
+                    </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employee_list %}
+            <tr>
+                <td>{{employee.fullname}}</td>
+                <td>{{employee.mobile}}</td>
+                <td>{{employee.position}}</td>
+                <td>
+                    <a href="{% url 'employee_update' employee.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'employee_delete' employee.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button class="btn" type="submit" >
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

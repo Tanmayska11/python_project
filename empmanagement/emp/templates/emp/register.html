@@ -1,0 +1,40 @@
+{% extends "emp/base.html" %}
+
+
+{% block content %}
+<div class="container mt-5">
+
+
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Register</h1>
+        <hr>
+        {% if messages %}
+
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        
+        {% endif %}
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Email id.</label>
+            <input type="email" name="email" class="form-control" id="exampleInputName" aria-describedby="">
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Create User Name</label>
+            <input type="text" class="form-control" name="username" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Create Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <p>Already have account ? <a href="/login/">Login</a> </p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock content %}
